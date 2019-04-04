@@ -40,8 +40,21 @@ namespace GradeBook.GradeBooks
             {
                 top80grades.Add(sortedStudents[i].AverageGrade);
             }
-            if (top20grades.Contains(averageGrade) ){
+            if (top20grades.Contains(averageGrade))
+            {
                 return 'A';
+            }
+            else if (top40grades.Contains(averageGrade))
+            {
+                return 'B';
+            }
+            else if (top60grades.Contains(averageGrade))
+            {
+                return 'C';
+            }
+            else if (top80grades.Contains(averageGrade))
+            {
+                return 'D';
             }
             return 'F';
         }
