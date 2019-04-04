@@ -1,5 +1,5 @@
 ﻿
-
+using System;
 namespace GradeBook.GradeBooks
 {
     public class RankedGradeBook : BaseGradeBook
@@ -13,7 +13,7 @@ namespace GradeBook.GradeBooks
         public override char GetLetterGrade(double averageGrade)
         {
             if (Students.Count<5){
-                throw new InvalidOperactionException();
+                throw new InvalidOperationException();
             }
             return 'F';
         }
