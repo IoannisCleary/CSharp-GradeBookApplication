@@ -19,6 +19,7 @@ namespace GradeBook.GradeBooks
             int twentyPercent = Students.Count / 5;
             List<Student> sortedStudents = new List<Student>(Students);
             sortedStudents.Sort();
+            sortedStudents.Reverse();
             List<double> top20grades = new List<double>();
             for (int i = 0; i < twentyPercent; i++)
             {
