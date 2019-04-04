@@ -1,5 +1,6 @@
-﻿
-using System;
+﻿using System;
+using System.Collections.Generic;
+
 namespace GradeBook.GradeBooks
 {
     public class RankedGradeBook : BaseGradeBook
@@ -9,11 +10,37 @@ namespace GradeBook.GradeBooks
             Type = Enums.GradeBookType.Ranked;
         }
 
-        
         public override char GetLetterGrade(double averageGrade)
         {
-            if (Students.Count<5){
+            if (Students.Count < 5)
+            {
                 throw new InvalidOperationException();
+            }
+            int twentyPercent = Students.Count / 5;
+            List<Student> sortedStudents = new List<Student>(Students);
+            sortedStudents.Sort();
+            List<double> top20grades = new List<double>();
+            for (int i = 0; i < twentyPercent; i++)
+            {
+                top20grades.Add(sortedStudents[i].AverageGrade);
+            }
+            List<double> top40grades = new List<double>();
+            for (int i = twentyPercent; i < twentyPercent * 2; i++)
+            {
+                top40grades.Add(sortedStudents[i].AverageGrade);
+            }
+            List<double> top60grades = new List<double>();
+            for (int i = twentyPercent * 2; i < twentyPercent * 3; i++)
+            {
+                top60grades.Add(sortedStudents[i].AverageGrade);
+            }
+            List<double> top80grades = new List<double>();
+            for (int i = twentyPercent * 3; i < twentyPercent * 4; i++)
+            {
+                top80grades.Add(sortedStudents[i].AverageGrade);
+            }
+            if (top20grades.Contains(averageGrade) ){
+                return 'A';
             }
             return 'F';
         }
