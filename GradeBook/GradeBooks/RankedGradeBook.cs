@@ -16,7 +16,7 @@ namespace GradeBook.GradeBooks
             {
                 throw new InvalidOperationException();
             }
-            Dictionary<string, List<double>>  rankings = generateGradeRankins();
+            Dictionary<string, List<double>> rankings = generateGradeRankins();
             if (rankings["Top20"].Contains(averageGrade))
             {
                 return 'A';
@@ -69,6 +69,26 @@ namespace GradeBook.GradeBooks
             }
             rankings.Add("Top60To80", top20grades);
             return rankings;
+        }
+        public override void CalculateStatistics()
+        {
+            if (Students.Count < 5)
+            {
+                Console.WriteLine("Ranked grading requires at least 5 students with grades in order to properly calculate a student's overall grade.");
+                return;
+            }
+            base.CalculateStatistics();
+        }
+
+        public override void CalculateStudentStatistics(string name)
+        {
+
+            if (Students.Count < 5)
+            {
+                Console.WriteLine("Ranked grading requires at least 5 students with grades in order to properly calculate a student's overall grade.");
+                return;
+            }
+            base.CalculateStudentStatistics(name);
         }
     }
 }
