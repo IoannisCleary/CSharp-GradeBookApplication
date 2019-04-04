@@ -46,13 +46,14 @@ namespace GradeBook
             Grades.Remove(grade);
         }
 
-        public int CompareTo(Student obj)
+        public int CompareTo(object obj)
         {
-            if (AverageGrade == obj.AverageGrade)
+            Student student = (Student) obj;
+            if (AverageGrade == student.AverageGrade)
             {
                 return 0;
             }
-            else if (AverageGrade < obj.AverageGrade)
+            else if (AverageGrade < student.AverageGrade)
             {
                 return -1;
             }
